@@ -1,0 +1,6 @@
+
+const xidb = {
+
+}
+
+export { xidb }
