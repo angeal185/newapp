@@ -66,7 +66,7 @@ const xdata = {
         "ico": "store"
       }, {
         "title": "News",
-        "dest": "news",
+        "dest": "news?sort=date",
         "ico": "chrome_reader_mode"
       }, {
         "title": "Contact",
@@ -123,7 +123,7 @@ const xdata = {
     msg: 'logout page'
   },
   news: {
-    msg: 'news page'
+    msg: 'News feed'
   },
   contact: {
     msg: 'contact page'

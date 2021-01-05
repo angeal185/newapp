@@ -93,7 +93,38 @@ const xviews = {
     return item;
   },
   news(stream, data){
-    let item = x('div', x('p', data.msg));
+    let item = x('div', x('h2', data.msg), x('hr'));
+
+    stream.fetch('./app/data/news.json', function(err, res){
+      if(err){return console.error(err)}
+      res = res.json;
+
+
+      if(data.search){
+        let arr = data.search,
+        str = arr[1]
+
+
+
+        if(arr[0] === 'author'){
+          for (let i = 0; i < res.length; i++) {
+            if(res[i].author !== str){
+              res.splice(i, 1);
+            }
+          }
+        } else if (arr[0] === 'category'){
+          for (let i = 0; i < res.length; i++) {
+            if(res[i].category !== str){
+              res.splice(i, 1);
+            }
+          }
+        }
+      }
+
+      for (let i = 0; i < res.length; i++) {
+        item.append(tpl.newsPost(res[i], router))
+      }
+    })
 
     return item;
   },

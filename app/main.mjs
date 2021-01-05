@@ -62,9 +62,20 @@ router.on('/dashboard', function(request, stream){
 })
 .on('/news', function(request, stream) {
 
+  let sel = request.params.get('author');
+  if(sel){
+    request.data.search = ['author', sel]
+  }
+
+  sel = request.params.get('category');
+  if(sel){
+    request.data.search = ['category', sel]
+  }
+
   stream.render('news', request.data, function(err){
-    if(err){return stream.renderErr();}
+    if(err){return console.error(err)}
   })
+
 })
 .on('/contact', function(request, stream) {
 

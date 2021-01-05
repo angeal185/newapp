@@ -538,6 +538,42 @@ const tpl = {
     setTimeout
 
     return ele
+  },
+  newsPost(obj, router){
+    let item = x('div', {class: ''},
+      x('h3', obj.title),
+      x('p', obj.body),
+      x('span', {class: 'mr-4', title: 'author'},
+        x('i', {class: 'ico'}, 'person'),
+        x('span', {
+          class: 'cp',
+          onclick(){
+            router.rout('/news?author='+ obj.author)
+          }
+        }, obj.author)
+      ),
+      x('span', {class: 'mr-4', title: 'date'},
+        x('i', {class: 'ico'}, 'date_range'),
+        x('span', {
+          class: 'cp',
+          onclick(){
+            router.rout('/news?sort=date')
+          }
+        }, utils.format_date(obj.date))
+      ),
+      x('span', {class: 'mr-4', title: 'category'},
+        x('i', {class: 'ico'}, 'local_offer'),
+        x('span', {
+          class: 'cp',
+          onclick(){
+            router.rout('/news?category='+ obj.category)
+          }
+        }, obj.category)
+      ),
+      x('hr')
+    )
+
+    return item;
   }
 }
 

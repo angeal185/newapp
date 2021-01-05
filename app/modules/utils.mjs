@@ -1,6 +1,22 @@
 import { x } from './xscript.mjs';
 
 const utils = {
+  format_date: function(i){
+    let date = new Date(i),
+    dd = date.getDate(),
+    mm = date.getMonth()+1,
+    yyyy = date.getFullYear();
+
+    if(dd < 10){
+      dd = '0' + dd
+    }
+
+    if(mm < 10){
+      mm = '0' + mm
+    };
+
+    return [dd, mm, yyyy].join('-')
+  },
   get(url, cb){
 
     fetch(url, {
@@ -64,6 +80,46 @@ const utils = {
       }
     }
   },
+  capitalize(str) {
+   try {
+     let x = str[0] || str.charAt(0);
+     return x  ? x.toUpperCase() + str.substr(1) : '';
+   } catch (err) {
+     if(err){return str;}
+   }
+  },
+  is_email(email){
+   if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)){
+     return true;
+    }
+    return false;
+  },
+  is_letters(txt){
+    if(txt.match(/^[A-Za-z]+$/)){
+      return true;
+    }
+    return false;
+  },
+  is_alphanumeric(txt){
+    if(txt.match(/^[0-9a-zA-Z]+$/)) {
+      return true;
+    }
+    return false;
+  },
+  snake_case(str){
+    try {
+      return str.replace(/ /g, '_');
+    } catch (err) {
+      if(err){return str;}
+    }
+  },
+  un_snake_case(str){
+    try {
+      return str.replace(/_/g, ' ');
+    } catch (err) {
+      if(err){return str;}
+    }
+  }
 }
 
 export { utils }
