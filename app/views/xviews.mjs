@@ -24,13 +24,14 @@ const xviews = {
         tpl.topbar(router),
         app_main
       ),
+      tpl.toast(),
       toTop
     )
 
     window.addEventListener('scroll', utils.debounce(function(evt){
-       let top = window.pageYOffset || document.scrollTop
+       let top = window.pageYOffset || document.scrollTop;
        if(top === NaN || !top){
-         toTop.classList.add('hidden')
+         toTop.classList.add('hidden');
        } else if(toTop.classList.contains('hidden')){
          toTop.classList.remove('hidden');
        }
@@ -97,9 +98,7 @@ const xviews = {
     return item;
   },
   contact(stream, data){
-    let item = x('div', x('p', data.msg));
-
-    return item;
+    return tpl.contact();
   },
   about(stream, data){
     let item = x('div', x('p', data.msg));

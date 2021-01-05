@@ -1,12 +1,13 @@
 import { x } from '../modules/xscript.mjs';
 import { xdata } from '../data/xdata.mjs';
 import { utils } from '../modules/utils.mjs';
+import { ls,ss } from '../modules/storage.mjs';
 
 const tpl = {
   sidebar(router){
 
-    let item = x('div', {id: 'sidebar', class: 'active'},
-      x('div', {class: 'sidebar-wrapper active'},
+    let item = x('div', {id: 'sidebar', class: ''},
+      x('div', {class: 'sidebar-wrapper'},
         x('div', {class: 'sidebar-header'},
           x('h1', xdata.app.name)
         ),
@@ -50,7 +51,9 @@ const tpl = {
       x('div', {
           class: 'sidebar-link',
           onclick(){
-            router.rout('/'+ obj.dest)
+            router.rout('/'+ obj.dest);
+            let event = new Event('toggle-sidebar');
+            window.dispatchEvent(event);
           }
         },
         x('i', {class: 'ico'}, obj.ico),
@@ -74,6 +77,7 @@ const tpl = {
       ),
       x('div', {class: 'collapse navbar-collapse'},
         x('ul', {class: 'navbar-nav d-flex align-items-center ml-auto'},
+          tpl.theme(),
           tpl.notifications(),
           tpl.navmenu(router)
         )
@@ -85,7 +89,10 @@ const tpl = {
   notifications(){
 
     let item = x('li', {class: 'dropdown nav-icon cp'},
-      x('a', {class: 'nav-link  dropdown-toggle nav-link-lg nav-link-user'},
+      x('a', {
+          class: 'nav-link  dropdown-toggle nav-link-lg nav-link-user',
+          'data-bs-toggle': 'dropdown',
+        },
         x('div', {class: 'd-lg-inline-block'},
           x('i', {class: 'ico'}, 'notifications_none')
         )
@@ -95,6 +102,41 @@ const tpl = {
         x('ul', {class: 'list-group rounded-none'})
       )
     )
+
+    return item;
+  },
+  theme(){
+    let ico = x('i', {class: 'ico'}),
+    darkstyle = x('link', {href: './app/css/dark.css', rel: 'stylesheet'}),
+    item = x('li', {
+        class: 'nav-icon dropdown cp',
+        onclick(evt){
+          if(ls.get('darkmode')){
+            ls.set('darkmode', false);
+          } else {
+            ls.set('darkmode', true);
+          }
+          window.dispatchEvent(new CustomEvent('dark-mode', {detail:true}));
+        }
+      },
+      x('a', {class: 'nav-link nav-link-lg nav-link-user'},
+        x('div', {class: 'd-lg-inline-block'}, ico)
+      )
+    )
+
+    window.addEventListener('dark-mode', function (evt) {
+      console.log('hit')
+      if(!ls.get('darkmode')){
+        darkstyle.remove()
+        ico.textContent = 'brightness_7';
+      } else {
+        document.head.append(darkstyle)
+        ico.textContent = 'brightness_4';
+      }
+    }, false);
+
+
+
 
     return item;
   },
@@ -185,7 +227,8 @@ const tpl = {
     let item = x('a', {
         class: 'dropdown-item',
         onclick(){
-          router.rout('/'+ obj.dest)
+          router.rout('/'+ obj.dest);
+
         }
       },
       x('i', {class: 'ico'}, obj.ico),
@@ -324,37 +367,73 @@ const tpl = {
             x('div', {class: 'col-12 col-md-6'},
               x('div', {class: 'mt-4 form-group'},
                 x('label', 'first name'),
-                x('input', {class: 'form-control', type: 'text'})
+                x('input', {
+                  class: 'form-control',
+                  type: 'text',
+                  keyup(evt){
+                    obj.firstname = evt.target.textContent;
+                  }
+                })
               )
             ),
             x('div', {class: 'col-12 col-md-6'},
               x('div', {class: 'mt-4 form-group'},
                 x('label', 'last name'),
-                x('input', {class: 'form-control', type: 'text'})
+                x('input', {
+                  class: 'form-control',
+                  type: 'text',
+                  keyup(evt){
+                    obj.lastname = evt.target.textContent;
+                  }
+                })
               )
             ),
             x('div', {class: 'col-12 col-md-6'},
               x('div', {class: 'mt-4 form-group'},
                 x('label', 'email'),
-                x('input', {class: 'form-control', type: 'email'})
+                x('input', {
+                  class: 'form-control',
+                  type: 'email',
+                  keyup(evt){
+                    obj.email = evt.target.textContent;
+                  }
+                })
               )
             ),
             x('div', {class: 'col-12 col-md-6'},
               x('div', {class: 'mt-4 form-group'},
                 x('label', 'username'),
-                x('input', {class: 'form-control', type: 'text'})
+                x('input', {
+                  class: 'form-control',
+                  type: 'text',
+                  keyup(evt){
+                    obj.username = evt.target.textContent;
+                  }
+                })
               )
             ),
             x('div', {class: 'col-12 col-md-6'},
               x('div', {class: 'mt-4 form-group'},
                 x('label', 'password'),
-                x('input', {class: 'form-control', type: 'password'})
+                x('input', {
+                  class: 'form-control',
+                  type: 'password',
+                  keyup(evt){
+                    obj.password = evt.target.textContent;
+                  }
+                })
               )
             ),
             x('div', {class: 'col-12 col-md-6'},
               x('div', {class: 'mt-4 form-group'},
                 x('label', 're-enter password'),
-                x('input', {class: 'form-control', type: 'password'})
+                x('input', {
+                  class: 'form-control',
+                  type: 'password',
+                  keyup(evt){
+                    let tst = evt.target.textContent;
+                  }
+                })
               )
             )
           ),
@@ -376,6 +455,7 @@ const tpl = {
               class: 'btn btn-outline-success float-right',
               onclick(){
                 utils.addSpin(this);
+                console.log(obj)
               }
             }, 'Register')
           )
@@ -385,6 +465,79 @@ const tpl = {
     )
 
     return item;
+  },
+  contact(){
+    let item = x('div',
+      x('div', {class: 'card mb-4 text-center'},
+        x('div', {class: 'card-body'},
+          x('h3', 'Contact'),
+          x('div', {class: 'row'},
+            x('div', {class: 'col-12 col-md-6'},
+              x('div', {class: 'mt-4 form-group'},
+                x('label', 'name'),
+                x('input', {class: 'form-control', type: 'text'})
+              )
+            ),
+            x('div', {class: 'col-12 col-md-6'},
+              x('div', {class: 'mt-4 form-group'},
+                x('label', 'email'),
+                x('input', {
+                  class: 'form-control',
+                  type: 'email'
+                })
+              )
+            ),
+            x('div', {class: 'col-12'},
+              x('div', {class: 'mt-4 form-group'},
+                x('label', 'message'),
+                x('textarea', {class: 'form-control', rows: 8})
+              )
+            )
+          ),
+          x('div', {class: 'mt-4 mb-4'},
+            x('button', {
+              type: 'button',
+              class: 'btn btn-outline-success float-right',
+              onclick(){
+                utils.addSpin(this);
+              }
+            },'Send')
+          )
+
+        )
+      )
+    )
+
+    return item;
+  },
+  toast(){
+
+    let item = x('div', {class: 'toast-box'});
+
+    window.addEventListener('toasty', function(evt){
+      let ele = tpl.toasty(evt.detail);
+      setTimeout(function(){
+        ele.classList.add('fadeOutRightBig');
+        setTimeout(function(){
+          ele.remove();
+        },1000)
+      },5000)
+      item.append(ele)
+    })
+
+    return item;
+
+  },
+  toasty(obj){
+    let ele = x('div', {
+        class: 'toast d-flex align-items-center text-white bg-'+ obj.sel +' border-0 ani fadeInUp'
+      },
+      x('div', {class: 'toast-body'}, obj.data)
+    )
+
+    setTimeout
+
+    return ele
   }
 }
 

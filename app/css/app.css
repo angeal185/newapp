@@ -490,12 +490,7 @@ footer {
 .form-group {
   margin-bottom: 0.7rem;
 }
-.form-group label {
-  font-size: 0.755rem;
-  text-transform: uppercase;
-  color: rgba(35, 28, 99, 0.7);
-  font-weight: 500;
-}
+
 .form-group small {
   font-size: 0.7rem;
 }
@@ -1075,9 +1070,7 @@ footer {
   padding: 0.4rem;
   border-radius: 50%;
 }
-.navbar.navbar-header li.nav-icon .nav-link:hover {
-  background-color: #e9ecef;
-}
+
 .navbar.navbar-header .dropdown > a {
   color: #6c757d;
   font-weight: 600;

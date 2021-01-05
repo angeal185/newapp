@@ -26,11 +26,17 @@ const utils = {
 
     window.onload = function() {
 
-        let w = window.innerWidth;
-        if(w < 768) {
-            console.log('widthnya ', w)
-            document.getElementById('sidebar').classList.remove('active');
-        }
+      //resize
+      let w = window.innerWidth;
+      if(w < 768) {
+          console.log('widthnya ', w);
+          document.getElementById('sidebar').classList.remove('active');
+      }
+
+      //darkmode check
+      window.dispatchEvent(new CustomEvent('dark-mode', {detail:false}));
+
+      window.dispatchEvent(new CustomEvent('toasty', {detail:{sel: 'primary', data: 'test toast!'}}));
     }
 
   },

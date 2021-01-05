@@ -1,0 +1,71 @@
+body{
+      color: #cacaca;
+}
+
+.navbar-light, .sidebar-wrapper{
+  background: #333;
+}
+
+.sidebar-link:hover{
+  background: #555;
+}
+
+.navbar-light{
+box-shadow: 0 0 6px #333;
+}
+
+.sidebar-wrapper{
+  box-shadow: 0 0 10px #333;
+  border-right: 1px solid #333;
+}
+
+.sidebar-wrapper .menu .sidebar-link > span {
+    color: #f9f9f9;
+}
+
+.card, .dropdown-menu {
+    background-color: #464646;
+    border: 0 solid #272727;
+}
+
+
+#main {
+    background-color: #565656;
+}
+
+
+.form-control, .form-control:active, .form-control:focus {
+    color: #464646;
+    background-color: #b9b9b9;
+    border: 1px solid #b9b9b9;
+  }
+
+
+  .dropdown-item {
+      color: #6c757d;
+  }
+
+  .dropdown-divider {
+
+    border-top: 1px solid #6c757d;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    color: #8d8d8e;
+    background-color: #5a5b5d;
+}
+
+.form-check-input {
+  background-color: #b9b9b9;
+}
+
+.modal-content {
+
+    background-color: #2b2b2b;
+  }
+
+
+  h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1, .form-check-label {
+
+      color: inherit;
+  }
