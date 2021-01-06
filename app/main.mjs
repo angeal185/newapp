@@ -72,6 +72,12 @@ router.on('/dashboard', function(request, stream){
     request.data.search = ['category', sel]
   }
 
+  sel = request.params.get('title');
+  if(sel){
+    request.data.search = ['title', sel]
+  }
+
+
   stream.render('news', request.data, function(err){
     if(err){return console.error(err)}
   })

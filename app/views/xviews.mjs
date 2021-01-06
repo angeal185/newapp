@@ -93,7 +93,51 @@ const xviews = {
     return item;
   },
   news(stream, data){
-    let item = x('div', x('h2', data.msg), x('hr'));
+
+    let ttl = x('div', {class: 'col-6'},
+      x('h2', data.msg)
+    ),
+    srch = x('input', {
+      type: 'text',
+      class: 'form-control',
+      keyup(){
+
+      },
+      onfocus(evt){
+        ttl.classList.add('hidden');
+        evt.target.parentNode.parentNode.classList.remove('col-6');
+      },
+      onblur(evt){
+        ttl.classList.remove('hidden');
+        evt.target.parentNode.parentNode.classList.add('col-6');
+      }
+    }),
+    item = x('div',
+      x('div', {class: 'row'},
+        ttl,
+        x('div', {class: 'col col-6'},
+          x('div', {class: 'input-group input-group-sm'},
+            srch,
+            x('button', {
+              class: 'btn btn-outline-primary btn-sm',
+              onclick(evt){
+                let res = srch.value;
+                if(typeof res === 'number'){
+                  res = JSON.stringify(res)
+                }
+                
+                if(res.length > 0){
+                  router.rout('/news?title='+ res)
+                }
+              }
+            }, x('span', {class: 'ico'}, 'search'))
+          )
+        ),
+        x('div', {class: 'col-12'},
+          x('hr')
+        )
+      )
+    );
 
     stream.fetch('./app/data/news.json', function(err, res){
       if(err){return console.error(err)}
@@ -102,23 +146,31 @@ const xviews = {
 
       if(data.search){
         let arr = data.search,
-        str = arr[1]
+        str = arr[1],
+        newArr = []
 
 
 
         if(arr[0] === 'author'){
           for (let i = 0; i < res.length; i++) {
-            if(res[i].author !== str){
-              res.splice(i, 1);
+            if(res[i].author === str){
+              newArr.push(res[i]);
             }
           }
         } else if (arr[0] === 'category'){
           for (let i = 0; i < res.length; i++) {
-            if(res[i].category !== str){
-              res.splice(i, 1);
+            if(res[i].category === str){
+              newArr.push(res[i]);
+            }
+          }
+        } else if (arr[0] === 'title'){
+          for (let i = 0; i < res.length; i++) {
+            if(res[i].title.toLowerCase().includes(str.toLowerCase())){
+              newArr.push(res[i]);
             }
           }
         }
+        res = newArr;
       }
 
       for (let i = 0; i < res.length; i++) {
