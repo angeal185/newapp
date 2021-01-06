@@ -574,6 +574,111 @@ const tpl = {
     )
 
     return item;
+  },
+  portal(){
+
+    let item = x('div', {class: 'row'},
+      x('div', {class: 'col-12'},
+        x('h3', 'Your Weather')
+      ),
+      tpl.weather(),
+      x('div', {class: 'col-12'},
+        x('h3', 'Your Soundcloud')
+      ),
+      tpl.soundcloud('256257141'),
+      tpl.soundcloud('256256844'),
+      tpl.soundcloud('256256823'),
+      tpl.soundcloud('256256793'),
+      x('div', {class: 'col-12'},
+        x('h3', 'Your Youtube')
+      ),
+      tpl.youtube('j1F5dLm8bxk'),
+      tpl.youtube('Qzs37Fo6WVQ'),
+      tpl.youtube('d26usZr4wSg'),
+      tpl.youtube('o2q0qhnQdJk'),
+      x('div', {class: 'col-12'},
+        x('h3', 'Your Vimeo')
+      ),
+      tpl.vimeo('36895878'),
+      tpl.vimeo('106065331'),
+      tpl.vimeo('89792142'),
+      tpl.vimeo('116353351'),
+    )
+
+    return item
+
+
+ },
+  soundcloud(src){
+
+    let item = x('div', {class: 'col-xs-12 col-md-6 col-lg-3 text-center mb-4'},
+      x('iframe', {
+        class: 'w-100 h-100',
+        scrolling: 'no',
+        frameborder: 'no',
+        allow: 'autoplay',
+        sandbox: "allow-same-origin allow-scripts",
+        src: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/'+ src +'&color=%235a5858&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true&download=false&sharing=false&buying=false'
+      })
+    )
+    return item;
+
+  },
+  youtube(src){
+
+    let item = x('div', {class: 'col-xs-12 col-md-6 col-lg-3 text-center mb-4'},
+      x('iframe', {
+        class: 'w-100 h-100',
+        scrolling: 'no',
+        frameborder: 'no',
+        sandbox: "allow-same-origin allow-scripts allow-presentation",
+        allow: 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture',
+        src: 'https://www.youtube.com/embed/'+ src +'?modestbranding=1&loop=1'
+      })
+    )
+
+    return item
+  },
+  vimeo(src){
+
+    let item = x('div', {class: 'col-xs-12 col-md-6 col-lg-3 text-center mb-4'},
+      x('iframe', {
+        class: 'w-100 h-100',
+        scrolling: 'no',
+        frameborder: 'no',
+        allow: 'autoplay',
+        sandbox: "allow-same-origin allow-scripts",
+        src: 'https://player.vimeo.com/video/'+ src
+      })
+    )
+
+    return item
+  },
+  weather(){
+
+    let item = x('a', {
+      class: 'weatherwidget-io',
+      href: 'https://forecast7.com/en/n37d81144d96/melbourne/',
+      'data-label_1':'MELBOURNE',
+      'data-label_2':'WEATHER',
+      'data-font':'Ubuntu',
+      'data-theme':'beige',
+      'data-textcolor':'#585858',
+      'data-highcolor':'#585858',
+      'data-lowcolor':'#585858',
+      'data-suncolor':'#585858',
+      'data-mooncolor':'#585858',
+      'data-cloudcolor':'#585858',
+      'data-raincolor':'#585858',
+      'data-snowcolor':'#585858'
+    })
+
+    !function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+
+    return item;
+
+
+
   }
 }
 

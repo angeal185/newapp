@@ -54,7 +54,7 @@ const xviews = {
   portal(stream, data){
     let item = x('div', x('p', data.msg));
 
-    return item;
+    return tpl.portal();
   },
   settings(stream, data){
     let item = x('div', x('p', data.msg));
@@ -100,6 +100,7 @@ const xviews = {
     srch = x('input', {
       type: 'text',
       class: 'form-control',
+      placeholder: 'Search...',
       keyup(){
 
       },
@@ -125,7 +126,7 @@ const xviews = {
                 if(typeof res === 'number'){
                   res = JSON.stringify(res)
                 }
-                
+
                 if(res.length > 0){
                   router.rout('/news?title='+ res)
                 }
