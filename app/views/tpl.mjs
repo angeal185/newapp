@@ -726,6 +726,29 @@ const tpl = {
       )
     )
     return item;
+  },
+  storecard(obj){
+
+    let item = x('div', {class: 'col-xs-12 col-md-6, col-lg-3'},
+      x('div', {class: 'card'},
+        x('img', {class: 'card-img-top', src: obj.img}),
+        x('div',{class: 'card-body'},
+          x('h5',{class: 'card-title'},obj.title),
+          x('small', 'version: '+ obj.version),
+          x('p', {class: 'card-text'}, obj.description)
+        ),
+        x('div', {class: 'card-footer'},
+          x('button', {
+            class: 'btn btn-outline-primary btn-sm float-right',
+            type: 'text',
+            onclick(){
+
+            }
+          }, 'Install')
+        )
+      )
+    )
+    return item;
   }
 }
 
