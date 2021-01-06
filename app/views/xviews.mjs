@@ -62,7 +62,13 @@ const xviews = {
     return item;
   },
   apps(stream, data){
-    let item = x('div', x('p', data.msg));
+
+    let item = x('div', {class: 'row'}),
+    items = xdata.appdata;
+
+    for (let i = 0; i < items.length; i++) {
+      item.append(tpl.appcard(items[i]))
+    }
 
     return item;
   },

@@ -28,6 +28,14 @@ box-shadow: 0 0 6px #333;
     border: 0 solid #272727;
 }
 
+.card{
+      box-shadow: -8px 12px 18px 0 rgb(0 0 0 / 41%);
+}
+
+.card-footer {
+    background-color: #464646;
+    border-top: 0 solid #464646;
+}
 
 #main {
     background-color: #565656;

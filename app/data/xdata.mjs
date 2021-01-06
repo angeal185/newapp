@@ -44,6 +44,31 @@ const xdata = {
       }
     }
   },
+  appdata: [{
+    title: 'Todo',
+    description: 'a dynamic list of things to be done',
+    date: 1609949090839,
+    version: '1.0.0',
+    img: './app/img/background/1.png'
+  },{
+    title: 'Calendar',
+    description: 'a calendar and date planner',
+    date: 1609949090839,
+    version: '1.0.0',
+    img: './app/img/background/2.png'
+  },{
+    title: 'Menu Planner',
+    description: 'an app for planning munus',
+    date: 1609949090839,
+    version: '1.0.0',
+    img: './app/img/background/3.png'
+  },{
+    title: 'Notepad',
+    description: 'an app for keeping notes',
+    date: 1609949090839,
+    version: '1.0.0',
+    img: './app/img/background/4.png'
+  }],
   app: {
     name: 'APPNAME',
     avatar: 'app/img/avatar/avatar.jpg',
