@@ -621,7 +621,7 @@ const tpl = {
 
     let item = x('div', {class: 'col-xs-12 col-md-6 col-lg-3 text-center mb-4'},
       x('iframe', {
-        class: 'w-100 h-100',
+        class: 'w-100 h-100 vh-100',
         scrolling: 'no',
         frameborder: 'no',
         allow: 'autoplay',
@@ -636,7 +636,7 @@ const tpl = {
 
     let item = x('div', {class: 'col-xs-12 col-md-6 col-lg-3 text-center mb-4'},
       x('iframe', {
-        class: 'w-100 h-100',
+        class: 'w-100 h-100 vh-100',
         scrolling: 'no',
         frameborder: 'no',
         sandbox: "allow-same-origin allow-scripts allow-presentation",
