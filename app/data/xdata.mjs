@@ -79,7 +79,7 @@ const xdata = {
         "ico": "dashboard"
       }, {
         "title": "Portal",
-        "dest": "portal",
+        "dest": "portal?category=home",
         "ico": "grid_on"
       }, {
         "title": "Apps",

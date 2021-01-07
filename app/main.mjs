@@ -11,6 +11,7 @@ router.on('/dashboard', function(request, stream){
 })
 .on('/portal', function(request, stream) {
 
+  request.data.category = request.params.get('category')
   stream.render('portal', request.data, function(err){
     if(err){return stream.renderErr();}
   })

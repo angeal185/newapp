@@ -54,7 +54,7 @@ const xviews = {
   portal(stream, data){
     let item = x('div', x('p', data.msg));
 
-    return tpl.portal();
+    return tpl.portal(router, data.category);
   },
   settings(stream, data){
     let item = x('div', x('p', data.msg));

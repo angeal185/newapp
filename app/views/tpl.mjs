@@ -575,43 +575,72 @@ const tpl = {
 
     return item;
   },
-  portal(){
+  portal(router, cat){
 
-    let item = x('div', {class: 'row'},
-      x('div', {class: 'col-12'},
-        x('h3', 'Your Weather')
-      ),
-      tpl.weather(),
-      x('div', {class: 'col-12'},
-        x('h3', 'Your Spotify')
-      ),
-      tpl.spotify('track/4xkOaSrkexMciUUogZKVTS'),
-      tpl.spotify('track/7lQ8MOhq6IN2w8EYcFNSUk'),
-      tpl.spotify('track/3CpoeW0cZSDzIRv5z34F87'),
-      tpl.spotify('track/4woTEX1wYOTGDqNXuavlRC'),
+    let item;
 
-      tpl.spotify('album/2cWBwpqMsDJC1ZUwz813lo'),
-      tpl.spotify('album/2cWBwpqMsDJC1ZUwz813lo'),
-      tpl.spotify('album/2cWBwpqMsDJC1ZUwz813lo'),
-      tpl.spotify('album/2cWBwpqMsDJC1ZUwz813lo'),
+    if(cat === 'home'){
+
+      item = x('div', {class: 'row justify-content-center'},
+        x('div', {class: 'col-12'},
+          x('h3', 'Your Weather')
+        ),
+
+        tpl.weather()
+      )
+
+    } else if(cat === 'audio'){
+      
+      item = x('div', {class: 'row justify-content-center'},
+
+        x('div', {class: 'col-12'},
+          x('h3', 'Your Spotify')
+        ),
+        tpl.spotify('track/4xkOaSrkexMciUUogZKVTS'),
+        tpl.spotify('track/7lQ8MOhq6IN2w8EYcFNSUk'),
+        tpl.spotify('track/3CpoeW0cZSDzIRv5z34F87'),
+        tpl.spotify('track/4woTEX1wYOTGDqNXuavlRC'),
+
+        tpl.spotify('album/2cWBwpqMsDJC1ZUwz813lo'),
+        tpl.spotify('album/2cWBwpqMsDJC1ZUwz813lo'),
+        tpl.spotify('album/2cWBwpqMsDJC1ZUwz813lo'),
+        tpl.spotify('album/2cWBwpqMsDJC1ZUwz813lo'),
 
 
-      x('div', {class: 'col-12'},
-        x('h3', 'Your Soundcloud')
-      ),
-      tpl.soundcloud('256257141'),
-      tpl.soundcloud('256256844'),
-      tpl.soundcloud('256256823'),
-      tpl.soundcloud('256256793'),
-      x('div', {class: 'col-12'},
-        x('h3', 'Your Youtube')
-      ),
-      tpl.youtube('j1F5dLm8bxk'),
-      tpl.youtube('Qzs37Fo6WVQ'),
-      tpl.youtube('d26usZr4wSg'),
-      tpl.youtube('o2q0qhnQdJk'),
+        x('div', {class: 'col-12'},
+          x('h3', 'Your Soundcloud')
+        ),
+        tpl.soundcloud('256257141'),
+        tpl.soundcloud('256256844'),
+        tpl.soundcloud('256256823'),
+        tpl.soundcloud('256256793'),
+        x('div', {class: 'col-12'},
+          x('h3', 'Your Youtube')
+        ),
+        tpl.youtube('j1F5dLm8bxk'),
+        tpl.youtube('Qzs37Fo6WVQ'),
+        tpl.youtube('d26usZr4wSg'),
+        tpl.youtube('o2q0qhnQdJk')
 
-    )
+
+      )
+    }
+
+
+    item.append(x('div', {class: 'rs-menu'},
+      x('i', {
+        class: 'ico',
+        onclick(){
+          router.rout('/portal?category=home')
+        }
+      }, 'home'),
+      x('i', {
+        class: 'ico',
+        onclick(){
+          router.rout('/portal?category=audio')
+        }
+      }, 'music_video'),
+    ))
 
     return item
 
