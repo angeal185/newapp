@@ -590,7 +590,7 @@ const tpl = {
       )
 
     } else if(cat === 'audio'){
-      
+
       item = x('div', {class: 'row justify-content-center'},
 
         x('div', {class: 'col-12'},
@@ -602,11 +602,10 @@ const tpl = {
         tpl.spotify('track/4woTEX1wYOTGDqNXuavlRC'),
 
         tpl.spotify('album/2cWBwpqMsDJC1ZUwz813lo'),
-        tpl.spotify('album/2cWBwpqMsDJC1ZUwz813lo'),
-        tpl.spotify('album/2cWBwpqMsDJC1ZUwz813lo'),
-        tpl.spotify('album/2cWBwpqMsDJC1ZUwz813lo'),
-
-
+        tpl.spotify('album/78guAsers0klWl6RwzgDLd?si=IQRFTDx7QTyM0hqBT3UIUA'),
+        tpl.spotify('artist/6C0KWmCdqrLU2LzzWBPbOy'),
+        tpl.spotify('artist/1vCWHaC5f2uS3yhpwWbIA6'),
+        
         x('div', {class: 'col-12'},
           x('h3', 'Your Soundcloud')
         ),
