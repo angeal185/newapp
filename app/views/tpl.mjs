@@ -583,6 +583,13 @@ const tpl = {
       ),
       tpl.weather(),
       x('div', {class: 'col-12'},
+        x('h3', 'Your Spotify')
+      ),
+      tpl.spotify('4xkOaSrkexMciUUogZKVTS'),
+      tpl.spotify('7lQ8MOhq6IN2w8EYcFNSUk'),
+      tpl.spotify('3CpoeW0cZSDzIRv5z34F87'),
+      tpl.spotify('4woTEX1wYOTGDqNXuavlRC'),
+      x('div', {class: 'col-12'},
         x('h3', 'Your Soundcloud')
       ),
       tpl.soundcloud('256257141'),
@@ -596,13 +603,7 @@ const tpl = {
       tpl.youtube('Qzs37Fo6WVQ'),
       tpl.youtube('d26usZr4wSg'),
       tpl.youtube('o2q0qhnQdJk'),
-      x('div', {class: 'col-12'},
-        x('h3', 'Your Vimeo')
-      ),
-      tpl.vimeo('36895878'),
-      tpl.vimeo('106065331'),
-      tpl.vimeo('89792142'),
-      tpl.vimeo('116353351'),
+
     )
 
     return item
@@ -649,6 +650,23 @@ const tpl = {
         allow: 'autoplay',
         sandbox: "allow-same-origin allow-scripts",
         src: 'https://player.vimeo.com/video/'+ src
+      })
+    )
+
+    return item
+  },
+  spotify(src){
+
+
+    let item = x('div', {class: 'col-xs-12 col-md-6 col-lg-3 text-center mb-4'},
+      x('iframe', {
+        class: 'w-100 h-100',
+        scrolling: 'no',
+        frameborder: 'no',
+        allow: 'encrypted-media',
+        allowtransparency: 'true',
+        sandbox: 'allow-same-origin allow-scripts',
+        src: 'https://open.spotify.com/embed/track/'+ src
       })
     )
 
