@@ -605,14 +605,20 @@ const tpl = {
         tpl.spotify('album/78guAsers0klWl6RwzgDLd?si=IQRFTDx7QTyM0hqBT3UIUA'),
         tpl.spotify('artist/6C0KWmCdqrLU2LzzWBPbOy'),
         tpl.spotify('artist/1vCWHaC5f2uS3yhpwWbIA6'),
-        
+
         x('div', {class: 'col-12'},
           x('h3', 'Your Soundcloud')
         ),
-        tpl.soundcloud('256257141'),
-        tpl.soundcloud('256256844'),
-        tpl.soundcloud('256256823'),
-        tpl.soundcloud('256256793'),
+        tpl.soundcloud('tracks/256257141'),
+        tpl.soundcloud('tracks/256256844'),
+        tpl.soundcloud('tracks/256256823'),
+        tpl.soundcloud('tracks/39970329'),
+
+        tpl.soundcloud('playlists/923302972'),
+        tpl.soundcloud('playlists/4374638'),
+        tpl.soundcloud('playlists/602892573'),
+        tpl.soundcloud('playlists/556887426'),
+
         x('div', {class: 'col-12'},
           x('h3', 'Your Youtube')
         ),
@@ -654,7 +660,7 @@ const tpl = {
         frameborder: 'no',
         allow: 'autoplay',
         sandbox: "allow-same-origin allow-scripts",
-        src: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/'+ src +'&color=%235a5858&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true&download=false&sharing=false&buying=false'
+        src: 'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/'+ src +'&color=%235a5858&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true&download=false&sharing=false&buying=false'
       })
     )
     return item;
