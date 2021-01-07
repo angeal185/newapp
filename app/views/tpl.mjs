@@ -585,10 +585,17 @@ const tpl = {
       x('div', {class: 'col-12'},
         x('h3', 'Your Spotify')
       ),
-      tpl.spotify('4xkOaSrkexMciUUogZKVTS'),
-      tpl.spotify('7lQ8MOhq6IN2w8EYcFNSUk'),
-      tpl.spotify('3CpoeW0cZSDzIRv5z34F87'),
-      tpl.spotify('4woTEX1wYOTGDqNXuavlRC'),
+      tpl.spotify('track/4xkOaSrkexMciUUogZKVTS'),
+      tpl.spotify('track/7lQ8MOhq6IN2w8EYcFNSUk'),
+      tpl.spotify('track/3CpoeW0cZSDzIRv5z34F87'),
+      tpl.spotify('track/4woTEX1wYOTGDqNXuavlRC'),
+
+      tpl.spotify('album/2cWBwpqMsDJC1ZUwz813lo'),
+      tpl.spotify('album/2cWBwpqMsDJC1ZUwz813lo'),
+      tpl.spotify('album/2cWBwpqMsDJC1ZUwz813lo'),
+      tpl.spotify('album/2cWBwpqMsDJC1ZUwz813lo'),
+
+
       x('div', {class: 'col-12'},
         x('h3', 'Your Soundcloud')
       ),
@@ -660,13 +667,13 @@ const tpl = {
 
     let item = x('div', {class: 'col-xs-12 col-md-6 col-lg-3 text-center mb-4'},
       x('iframe', {
-        class: 'w-100 h-100',
+        class: 'w-100 h-100 vh-100',
         scrolling: 'no',
         frameborder: 'no',
         allow: 'encrypted-media',
         allowtransparency: 'true',
         sandbox: 'allow-same-origin allow-scripts',
-        src: 'https://open.spotify.com/embed/track/'+ src
+        src: 'https://open.spotify.com/embed/'+ src
       })
     )
 
