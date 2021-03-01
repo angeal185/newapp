@@ -2,64 +2,8 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
-
-    <link rel="stylesheet" href="../../app/css/bootstrap.css">
-    <link rel="stylesheet" href="./style.css">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./app/main.mjs" type="module" defer></script>
   </head>
-  <body>
-
-    <div class="container" style="margin-top: 2em;">
-
-<div class="row">
-	<div class="col-lg-12">
-		<div class="input-group">
-			<input id="scanner_input" class="form-control" placeholder="Click the button to scan an item" type="text" />
-
-				<button class="btn btn-outline-primary" type="button" data-bs-toggle="modal" data-bs-target="#livestream_scanner">
-					scan
-				</button>
-
-		</div><!-- /input-group -->
-	</div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
-
-
-<div class="modal" id="livestream_scanner">
-	<div class="modal-dialog  modal-xl">
-		<div class="modal-content">
-			<div class="modal-header">
-				<button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-				</button>
-				<h4 class="modal-title">Barcode Scanner</h4>
-			</div>
-			<div class="modal-body" style="position: static">
-        <div class="container-fluid">
-          <div id="interactive" class="viewport"></div>
-        </div>
-
-				<div class="error"></div>
-			</div>
-			<div class="modal-footer">
-				<label class="btn btn-default pull-left">
-					<i class="fa fa-camera"></i> Use camera app
-					<input type="file" accept="image/*;capture=camera" capture="camera" class="hidden" />
-				</label>
-				<button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
-			</div>
-		</div><!-- /.modal-content -->
-	</div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-
-</div>
-
-
-<script src="./quagga.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="../../app/js/bootstrap.js"></script>
-<script src="./main.mjs" defer></script>
-
-  </body>
+  <body></body>
 </html>
