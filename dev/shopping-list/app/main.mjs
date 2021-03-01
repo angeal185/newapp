@@ -1,6 +1,11 @@
 import { router, x } from './modules/jsnode.mjs';
+import { ls } from './modules/storage.mjs';
 
 window.detach = {}
+
+if(!ls.get('lists')){
+  ls.set('lists', ['default'])
+}
 
 router.on('/dashboard', function(request, stream){
   stream.render('dashboard', function(err){
@@ -12,6 +17,14 @@ router.on('/dashboard', function(request, stream){
 .on('/settings', function(request, stream) {
 
   stream.render('settings', request.data, function(err){
+    if(err){return stream.renderErr();}
+  })
+
+})
+
+.on('/lists', function(request, stream) {
+
+  stream.render('lists', request.data, function(err){
     if(err){return stream.renderErr();}
   })
 

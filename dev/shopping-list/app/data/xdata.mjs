@@ -53,6 +53,10 @@ const xdata = {
         "dest": "dashboard",
         "ico": "dashboard"
       }, {
+        "title": "Lists",
+        "dest": "lists",
+        "ico": "dashboard"
+      }, {
         "title": "Contact",
         "dest": "contact",
         "ico": "contact_mail"
@@ -70,6 +74,9 @@ const xdata = {
   },
   dashboard: {
     msg: 'dashboard page'
+  },
+  lists: {
+    msg: 'lists page'
   },
   settings: {
     msg: 'settings page'

@@ -85,13 +85,8 @@ const xviews = {
                 )
               ),
 
-              x('div', {class: 'mt-4'},
-                x('select', {class: 'form-select', multiple: '' },
-                  x('option', {selected: '', value: 0}, 'Default')
-                )
-              ),
 
-              x('div', {class: 'mt-4 btn-group', role: 'group'},
+              x('div', {class: 'mt-4 btn-group w-100', role: 'group'},
                 x('button', {
                   class: 'btn btn-primary',
                   type: 'button',
@@ -126,7 +121,11 @@ const xviews = {
                 ),
                 x('div', {class: 'modal-body'},
                   x('div', {class: 'container-fluid'},
-                    x('div', {id: 'interactive', class: 'viewport'})
+                    x('div', {id: 'interactive', class: 'viewport'},
+                      x('div', {class: 'diode'},
+                        x('div', {class: 'laser'})
+                      )
+                    )
                   ),
                   x('div', {class: 'error'})
                 ),
@@ -212,7 +211,7 @@ const xviews = {
                 })
                 .forEach(function(box) {
                   Quagga.ImageDebug.drawPath(box, { x: 0, y: 1 }, drawingCtx, {
-                    color: 'green',
+                    color: '#20ec39',
                     lineWidth: 4
                   });
                 });
@@ -220,8 +219,8 @@ const xviews = {
 
             if (result.box) {
               Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, {
-                color: '#00F',
-                lineWidth: 2
+                color: '#20ec39',
+                lineWidth: 4
               });
             }
 
@@ -230,7 +229,7 @@ const xviews = {
                 result.line,
                 { x: 'x', y: 'y' },
                 drawingCtx,
-                { color: 'red', lineWidth: 3 }
+                { color: 'red', lineWidth: 4 }
               );
             }
           }
@@ -259,6 +258,45 @@ const xviews = {
 
       }
     }
+
+    return item;
+  },
+  lists(stream, data){
+
+    let sel = x('select', {class: 'form-select', multiple: '' },
+      x('option', {selected: '', value: 0}, 'Default')
+    )
+
+    let item = x('div',
+      x('div', {class: 'mt-4'},
+        sel
+      ),
+
+      x('div', {class: 'mt-4 btn-group w-100', role: 'group'},
+        x('button', {
+          class: 'btn btn-primary',
+          type: 'button',
+          onclick(){
+
+          }
+        }, 'Add'),
+        x('button', {
+          class: 'btn btn-primary',
+          type: 'button',
+          onclick(){
+
+          }
+        }, 'Edit'),
+        x('button', {
+          class: 'btn btn-primary',
+          type: 'button',
+          onclick(){
+
+          }
+        }, 'Remove'),
+      )
+
+    );
 
     return item;
   },
