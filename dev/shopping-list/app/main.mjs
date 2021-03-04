@@ -1,11 +1,24 @@
 import { router, x } from './modules/jsnode.mjs';
 import { ls } from './modules/storage.mjs';
 
-window.detach = {}
 
-if(!ls.get('lists')){
-  ls.set('lists', ['default'])
+let evt = new Event("init");
+
+window.detach = {}
+window.db = new PouchDB({
+  name: 'listdb',
+  adapter: 'idb',
+  revs_limit: 1
+});
+
+if(!ls.get('current')){
+  ls.set('current', 'default')
 }
+
+window.addEventListener('init', function(){
+  console.log('initiating app')
+  router.init().listen().validate();
+}, false)
 
 router.on('/dashboard', function(request, stream){
   stream.render('dashboard', function(err){
@@ -42,4 +55,22 @@ router.on('/dashboard', function(request, stream){
     if(err){return stream.renderErr();}
   })
 })
-.init().listen().validate();
+
+db.get('list', function(err, doc) {
+  if(err){
+
+    db.put({
+      _id: 'list',
+      data: [{
+        name: 'default',
+        items: []
+      }]
+    }, function(err, res) {
+      if(err){return console.log(err);}
+      window.dispatchEvent(evt);
+    });
+
+  } else {
+    window.dispatchEvent(evt);
+  }
+});

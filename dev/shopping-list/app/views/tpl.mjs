@@ -183,9 +183,86 @@ const tpl = {
       x('div', {class: 'toast-body'}, obj.data)
     )
 
-    setTimeout
-
     return ele
+  },
+  mdl(txt, fn){
+
+    let inp = x('input', {
+      class: 'form-control',
+      type: 'text',
+      placeholder: ''
+    }),
+    cls = x('button', {
+      class: 'btn btn-primary',
+      type: 'button',
+      'data-bs-dismiss': 'modal',
+      'aria-label': 'close'
+    }, 'Close'),
+    item = x('div', {class: 'modal', id: 'request'},
+      x('div', {class: 'modal-dialog modal-xl'},
+        x('div', {class: 'modal-content'},
+          x('div', {class: 'modal-body'},
+            x('div', {class: 'container-fluid'},
+              x('label', {class: 'form-label'}, txt),
+              inp
+            ),
+            x('div', {class: 'error'})
+          ),
+          x('div', {class: 'modal-footer'},
+            cls,
+            x('button', {
+              class: 'btn btn-primary',
+              type: 'button',
+              onclick(){
+                let val = inp.value;
+                if(val){
+                  fn(val);
+                  inp.value = '';
+                  return cls.click();
+                }
+
+                let evt = new CustomEvent('toasty', {detail: {data: 'Invalid input', sel: 'danger'}});
+                window.dispatchEvent(evt);
+
+              }
+            }, 'Ok')
+          )
+        )
+      )
+    )
+    return item;
+  },
+  confirm(txt, fn){
+
+    let cls = x('button', {
+      class: 'btn btn-primary',
+      type: 'button',
+      'data-bs-dismiss': 'modal',
+      'aria-label': 'close'
+    }, 'No'),
+    item = x('div', {class: 'modal', id: 'confirm'},
+      x('div', {class: 'modal-dialog modal-xl'},
+        x('div', {class: 'modal-content'},
+          x('div', {class: 'modal-body'},
+            x('div', {class: 'container-fluid'},
+              x('h5', {class: 'text-center'}, txt)
+            )
+          ),
+          x('div', {class: 'modal-footer justify-content-between'},
+            cls,
+            x('button', {
+              class: 'btn btn-primary',
+              type: 'button',
+              onclick(){
+                fn(true);
+                return cls.click();
+              }
+            }, 'Yes')
+          )
+        )
+      )
+    )
+    return item;
   }
 }
 

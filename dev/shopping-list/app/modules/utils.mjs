@@ -119,6 +119,11 @@ const utils = {
     } catch (err) {
       if(err){return str;}
     }
+  },
+  udhref(){
+    let href = location.href.split('?')[0]
+    href += '?time='+ Date.now();
+    location.href = href;
   }
 }
 
