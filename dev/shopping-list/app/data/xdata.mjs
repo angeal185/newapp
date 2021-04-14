@@ -22,8 +22,6 @@ const xdata = {
 
     js_head:[],
     js_body:[{
-      src: './app/js/quagga.js'
-    }, {
       src: './app/js/bootstrap.js'
     }],
     storage: {
@@ -50,24 +48,22 @@ const xdata = {
     menu: {
       sb:[{
         "title": "Dashboard",
-        "dest": "dashboard",
-        "ico": "dashboard"
+        "dest": "dashboard"
       }, {
         "title": "Lists",
-        "dest": "lists",
-        "ico": "dashboard"
+        "dest": "lists"
+      }, {
+        "title": "Database",
+        "dest": "database"
       }, {
         "title": "Contact",
-        "dest": "contact",
-        "ico": "contact_mail"
+        "dest": "contact"
       }, {
         "title": "About",
-        "dest": "about",
-        "ico": "info_outline"
+        "dest": "about"
       }, {
         "title": "settings",
-        "dest": "settings",
-        "ico": "settings"
+        "dest": "settings"
       }],
       navmenu: []
     }
@@ -77,6 +73,9 @@ const xdata = {
   },
   lists: {
     msg: 'lists page'
+  },
+  database: {
+    msg: 'database page'
   },
   settings: {
     msg: 'settings page'

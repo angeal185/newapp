@@ -1,10 +1,12 @@
 import { router, x } from './modules/jsnode.mjs';
 import { ls } from './modules/storage.mjs';
+import { tpl } from './views/tpl.mjs';
 
 
 let evt = new Event("init");
 
 window.detach = {}
+
 window.db = new PouchDB({
   name: 'listdb',
   adapter: 'idb',
@@ -43,6 +45,14 @@ router.on('/dashboard', function(request, stream){
 
 })
 
+.on('/database', function(request, stream) {
+
+  stream.render('database', request.data, function(err){
+    if(err){return stream.renderErr();}
+  })
+
+})
+
 .on('/contact', function(request, stream) {
 
   stream.render('contact', request.data, function(err){
@@ -56,21 +66,24 @@ router.on('/dashboard', function(request, stream){
   })
 })
 
-db.get('list', function(err, doc) {
-  if(err){
+tpl.detach(function(){
+  db.get('list', function(err, doc) {
+    if(err){
+      console.log('db not found. creating...')
+      db.put({
+        _id: 'list',
+        data: [{
+          name: 'default',
+          items: []
+        }],
+        db:[]
+      }, function(err, res) {
+        if(err){return console.log(err);}
+        window.dispatchEvent(evt);
+      });
 
-    db.put({
-      _id: 'list',
-      data: [{
-        name: 'default',
-        items: []
-      }]
-    }, function(err, res) {
-      if(err){return console.log(err);}
+    } else {
       window.dispatchEvent(evt);
-    });
-
-  } else {
-    window.dispatchEvent(evt);
-  }
-});
+    }
+  });
+})

@@ -267,8 +267,7 @@ div.rs-menu i{
 
 
 .laser {
-  width: 500px;
-  height: 300px;
+  width: 100%;
   margin: 0;
   background-color: tomato;
   height: 1px;

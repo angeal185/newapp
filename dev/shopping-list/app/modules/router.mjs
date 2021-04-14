@@ -103,6 +103,7 @@ Router.prototype = {
       ls.set(pf +'_prev', current);
 
     } catch (err) {
+      
       if(this.settings.verbose){
         console.error(err)
       }
